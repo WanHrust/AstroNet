@@ -9,7 +9,7 @@ namespace AstroNet
     public class GestureRecogniser : MonoBehaviour
     {
 
-        [SerializeField] public Transform gestureOnScreenPrefab;
+        [SerializeField] private Transform gestureOnScreenPrefab;
 
         private List<Gesture> trainingSet = new List<Gesture>();
 
@@ -46,6 +46,28 @@ namespace AstroNet
         // Update is called once per frame
         void Update()
         {
+            if (Input.GetKeyUp(KeyCode.R))
+            {
+                recognized = true;
+
+                Gesture candidate = new Gesture(points.ToArray());
+                Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
+
+                Debug.Log( gestureResult.GestureClass + " " + gestureResult.Score);
+
+                if(gestureResult.GestureClass.Equals("square"))
+                {
+                   var clone = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    clone.transform.position = Vector3.zero;
+                } 
+                else if (gestureResult.GestureClass.Equals("circle"))
+                {
+                    var clone = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    clone.transform.position = Vector3.zero;
+                }
+            }
+
+            
             if (platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer)
             {
                 if (Input.touchCount > 0)
