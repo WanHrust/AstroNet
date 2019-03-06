@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using PDollarGestureRecognizer;
 using System.IO;
-
+using AstroNet.GameElements;
 namespace AstroNet
 {
     public class GestureRecogniser : MonoBehaviour
     {
 
         [SerializeField] private Transform gestureOnScreenPrefab;
+
+        [SerializeField] private AssembledObject _assembledObject;
 
         private List<Gesture> trainingSet = new List<Gesture>();
 
@@ -57,8 +59,7 @@ namespace AstroNet
 
                 if(gestureResult.GestureClass.Equals("square"))
                 {
-                   var clone = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    clone.transform.position = Vector3.zero;
+                   _assembledObject.Attack(FaceType.Square);
                 } 
                 else if (gestureResult.GestureClass.Equals("circle"))
                 {
