@@ -9,17 +9,16 @@ namespace AstroNet.GameElements
         // Start is called before the first frame update
         public void Attack(FaceType type)
         {
-            foreach(var face in _faces)
+            foreach (var face in _faces)
             {
-                if (face.gameObject.activeSelf)
+                var objectFace = face.GetComponent<ObjectFace>();
+                if (!objectFace.Active) continue;
+                if (objectFace.Type == type)
                 {
-                    var objectFace = face.GetComponent<ObjectFace>();
-                    if(objectFace.Type == type)
-                    {
-                        objectFace.Explode();
-                        break;
-                    }
+                    objectFace.Explode();
+                    break;
                 }
+
             }
         }
     }

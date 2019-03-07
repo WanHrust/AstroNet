@@ -106,3 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
+  _explosionEffect: {fileID: 1436447386774278, guid: b36e5394bf3902b41877ecba9aa55b8d,
+    type: 3}
+  _effectDuration: 3
