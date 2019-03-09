@@ -76,7 +76,7 @@ namespace AstroNet
         void Start()
         {
             platform = Application.platform;
-            drawArea = new Rect(0, 0, Screen.width - Screen.width / 3, Screen.height);
+            drawArea = new Rect(0, 0, Screen.width, Screen.height);
 
             var files = Resources.LoadAll<TextAsset>("Gestures/") as TextAsset[];
             foreach (TextAsset file in files)
