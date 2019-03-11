@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AstroNet.GameElements
@@ -6,8 +7,8 @@ namespace AstroNet.GameElements
     [RequireComponent(typeof(Rigidbody))]
     public class AssembledObject : MonoBehaviour
     {
-        [SerializeField] Vector2 _initialTorqueRange;
-        [SerializeField] Vector2 _initialForceRange;
+        public Action OnAsteroidDestroyed;
+
         [SerializeField] Transform _target;
         [SerializeField] List<Transform> _faces;
 
@@ -15,44 +16,42 @@ namespace AstroNet.GameElements
         // Start is called before the first frame update
         public void Attack(FaceType type)
         {
+            int numOfInactive = 0;
             foreach (var face in _faces)
             {
                 var objectFace = face.GetComponent<ObjectFace>();
-                if (!objectFace.Active) continue;
+                if (!objectFace.Active)
+                {
+                    numOfInactive++;
+                    continue;
+                }
                 if (objectFace.Type == type)
                 {
                     objectFace.Explode();
                     break;
                 }
-
+            }
+            if(numOfInactive == _faces.Count - 1)
+            {
+                OnAsteroidDestroyed?.Invoke();
             }
         }
 
-        protected void Start()
+        protected void Awake()
         {
             _rigidBody = GetComponent<Rigidbody>();
-            ApplyInitialTorque();
-            ApplyInitialForce();
-
         }
 
-        [ContextMenu("ApplyTorque")]
-        private void ApplyInitialTorque()
+        public void ApplyInitialTorque(Vector3 torque)
         {
             _rigidBody.angularVelocity = Vector3.zero;
-            var tx = Random.Range(_initialTorqueRange.x, _initialTorqueRange.y);
-            var ty = Random.Range(_initialTorqueRange.x, _initialTorqueRange.y);
-            var tz = Random.Range(_initialTorqueRange.x, _initialTorqueRange.y);
-            var randomTorque = new Vector3(tx, ty, tz) * _rigidBody.mass;
-
+            var randomTorque = torque * _rigidBody.mass;
             _rigidBody.AddRelativeTorque(randomTorque, ForceMode.VelocityChange);
         }
-        [ContextMenu("ApplyForce")]
-        private void ApplyInitialForce()
+
+        public void ApplyInitialForce(Vector3 force)
         {
             _rigidBody.velocity = Vector3.zero;
-            var direction = _target.position - transform.position;
-            var force = direction * Random.Range(_initialForceRange.x, _initialForceRange.y);
             _rigidBody.AddForce(force, ForceMode.VelocityChange);
         }
     }

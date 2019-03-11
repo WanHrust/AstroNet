@@ -5,10 +5,13 @@ using PDollarGestureRecognizer;
 using System.IO;
 using AstroNet.GameElements;
 using UnityEngine.EventSystems;
+using System;
+
 namespace AstroNet
 {
     public class GestureRecogniser : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
+        public Action<FaceType> OnShapeRecognised;
 
         [SerializeField] private Transform gestureOnScreenPrefab;
 
@@ -94,12 +97,19 @@ namespace AstroNet
 
             if (gestureResult.GestureClass.Equals("square"))
             {
-                _assembledObject.Attack(FaceType.Square);
+                OnShapeRecognised?.Invoke(FaceType.Square);
             }
-            else if (gestureResult.GestureClass.Equals("circle"))
+            else if (gestureResult.GestureClass.Equals("Circle"))
             {
-                var clone = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                clone.transform.position = Vector3.zero;
+                OnShapeRecognised?.Invoke(FaceType.Circle);
+            }
+            else if (gestureResult.GestureClass.Equals("Triangle"))
+            {
+                OnShapeRecognised?.Invoke(FaceType.Triangle);
+            }
+            else if (gestureResult.GestureClass.Equals("Pentagon"))
+            {
+                OnShapeRecognised?.Invoke(FaceType.Pentagon);
             }
         }
         // Update is called once per frame

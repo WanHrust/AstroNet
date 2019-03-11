@@ -3,6 +3,7 @@
 namespace AstroNet.GameElements
 {
     public enum FaceType {
+        Pentagon,
         Square,
         Triangle,
         Circle
