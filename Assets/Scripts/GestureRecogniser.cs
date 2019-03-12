@@ -15,8 +15,6 @@ namespace AstroNet
 
         [SerializeField] private Transform gestureOnScreenPrefab;
 
-        [SerializeField] private AssembledObject _assembledObject;
-
         private List<Gesture> trainingSet = new List<Gesture>();
 
         private List<Point> points = new List<Point>();
@@ -65,14 +63,12 @@ namespace AstroNet
 
             vertexCount = 0;
 
-            Debug.Log("OnPointerDoown");
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             pointerDown = false;
             RecogniseDrawing();
-            Debug.Log("OnPointerUp");
         }
 
         // Start is called before the first frame update
@@ -95,21 +91,24 @@ namespace AstroNet
 
             Debug.Log(gestureResult.GestureClass + " " + gestureResult.Score);
 
-            if (gestureResult.GestureClass.Equals("square"))
+            if (gestureResult.Score > 0.85f)
             {
-                OnShapeRecognised?.Invoke(FaceType.Square);
-            }
-            else if (gestureResult.GestureClass.Equals("Circle"))
-            {
-                OnShapeRecognised?.Invoke(FaceType.Circle);
-            }
-            else if (gestureResult.GestureClass.Equals("Triangle"))
-            {
-                OnShapeRecognised?.Invoke(FaceType.Triangle);
-            }
-            else if (gestureResult.GestureClass.Equals("Pentagon"))
-            {
-                OnShapeRecognised?.Invoke(FaceType.Pentagon);
+                if (gestureResult.GestureClass.Equals("Square"))
+                {
+                    OnShapeRecognised?.Invoke(FaceType.Square);
+                }
+                else if (gestureResult.GestureClass.Equals("Circle"))
+                {
+                    OnShapeRecognised?.Invoke(FaceType.Circle);
+                }
+                else if (gestureResult.GestureClass.Equals("Triangle"))
+                {
+                    OnShapeRecognised?.Invoke(FaceType.Triangle);
+                }
+                else if (gestureResult.GestureClass.Equals("Pentagon"))
+                {
+                    OnShapeRecognised?.Invoke(FaceType.Pentagon);
+                }
             }
         }
         // Update is called once per frame

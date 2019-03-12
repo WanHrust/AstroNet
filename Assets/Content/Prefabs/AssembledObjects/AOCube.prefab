@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7137850819917316801}
-  - component: {fileID: 5373547605680382884}
   - component: {fileID: 1928553958900544875}
+  - component: {fileID: 5373547605680382884}
   m_Layer: 0
   m_Name: AOCube
   m_TagString: Untagged
@@ -38,26 +38,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5373547605680382884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201114554129399611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7568747322c84a1498f7ea828a2d370f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _faces:
-  - {fileID: 8303778416601906602}
-  - {fileID: 1518454860469823191}
-  - {fileID: 6490920218801780130}
-  - {fileID: 8254356124633062666}
-  - {fileID: 5075334974740937033}
-  - {fileID: 5576848674807656852}
 --- !u!54 &1928553958900544875
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -74,6 +54,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5373547605680382884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201114554129399611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7568747322c84a1498f7ea828a2d370f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _faces:
+  - {fileID: 8303778416601906602}
+  - {fileID: 1518454860469823191}
+  - {fileID: 6490920218801780130}
+  - {fileID: 8254356124633062666}
+  - {fileID: 5075334974740937033}
+  - {fileID: 5576848674807656852}
 --- !u!1001 &453409408809178109
 PrefabInstance:
   m_ObjectHideFlags: 0

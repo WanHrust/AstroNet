@@ -1,20 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace AstroNet.GameElements
 {
-    public enum FaceType {
+    public enum FaceType
+    {
         Pentagon,
         Square,
         Triangle,
         Circle
     }
-    [RequireComponent(typeof(MeshRenderer))]
-    [RequireComponent(typeof(Collider))]
     public class ObjectFace : MonoBehaviour
     {
         [SerializeField] private FaceType _type;
         [SerializeField] private GameObject _explosionEffect;
         [SerializeField] private float _effectDuration;
+
+        public Action OnFaceExploded;
 
         private bool _active = true;
 
@@ -22,12 +25,23 @@ namespace AstroNet.GameElements
 
         public FaceType Type => _type;
 
-        private MeshRenderer _meshRenderer;
+
+        private List<MeshRenderer> _meshRenderers;
         private Collider _collider;
 
         protected void Start()
         {
-            _meshRenderer = GetComponent<MeshRenderer>();
+            _meshRenderers = new List<MeshRenderer>();
+            var meshRenderers = GetComponentsInChildren<MeshRenderer>();
+            if (meshRenderers != null)
+            {
+                _meshRenderers.AddRange(meshRenderers);
+            }
+            var meshRenderer = GetComponent<MeshRenderer>();
+            if (meshRenderer != null)
+            {
+                _meshRenderers.Add(meshRenderer);
+            }
             _collider = GetComponent<Collider>();
         }
 
@@ -40,8 +54,13 @@ namespace AstroNet.GameElements
         private void DisableObject()
         {
             _active = false;
-            _meshRenderer.enabled = false;
+            foreach (var meshRenderer in _meshRenderers)
+            {
+                meshRenderer.enabled = false;
+            }
+
             _collider.enabled = false;
+            OnFaceExploded?.Invoke();
         }
     }
 }

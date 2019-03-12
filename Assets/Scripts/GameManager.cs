@@ -54,7 +54,7 @@ namespace AstroNet
                     var ty = Random.Range(_initialTorqueRange.x, _initialTorqueRange.y);
                     var tz = Random.Range(_initialTorqueRange.x, _initialTorqueRange.y);
                     var torque = new Vector3(tx, ty, tz);
-                    _currentAsteroid.ApplyInitialForce(_initialTorqueRange);
+                    _currentAsteroid.ApplyInitialTorque(_initialTorqueRange);
                     _currentAsteroid.OnAsteroidDestroyed += AsteroidDestroyd;
                     break;
                 default:

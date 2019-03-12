@@ -9,10 +9,11 @@ namespace AstroNet.GameElements
     {
         public Action OnAsteroidDestroyed;
 
-        [SerializeField] Transform _target;
         [SerializeField] List<Transform> _faces;
 
         private Rigidbody _rigidBody;
+
+        private ObjectFace _lastFace;
         // Start is called before the first frame update
         public void Attack(FaceType type)
         {
@@ -27,13 +28,14 @@ namespace AstroNet.GameElements
                 }
                 if (objectFace.Type == type)
                 {
+                    if (numOfInactive == _faces.Count - 1)
+                    {
+                        _lastFace = objectFace;
+                        objectFace.OnFaceExploded += LastFaceDestroyed;
+                    }
                     objectFace.Explode();
                     break;
                 }
-            }
-            if(numOfInactive == _faces.Count - 1)
-            {
-                OnAsteroidDestroyed?.Invoke();
             }
         }
 
@@ -53,6 +55,12 @@ namespace AstroNet.GameElements
         {
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.AddForce(force, ForceMode.VelocityChange);
+        }
+
+        private void LastFaceDestroyed()
+        {
+            _lastFace.OnFaceExploded -= LastFaceDestroyed;
+            OnAsteroidDestroyed?.Invoke();
         }
     }
 }
