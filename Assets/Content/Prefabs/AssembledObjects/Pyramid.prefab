@@ -69,6 +69,8 @@ MonoBehaviour:
   - {fileID: 2404215282235284964}
   - {fileID: 144114741559122963}
   - {fileID: 8823635603247669954}
+  _playerTag: AsteroidTarget
+  _explosionEffect: {fileID: 0}
 --- !u!1001 &3247588169600376570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,11 +78,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3317358233224079836}
     m_Modifications:
-    - target: {fileID: 6842666643955850538, guid: 00e58572cdb40bd42addef4e11363cb5,
-        type: 3}
-      propertyPath: m_Name
-      value: Triangle (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 6296623743420316728, guid: 00e58572cdb40bd42addef4e11363cb5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -136,6 +133,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -70.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6842666643955850538, guid: 00e58572cdb40bd42addef4e11363cb5,
+        type: 3}
+      propertyPath: m_Name
+      value: Triangle (3)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00e58572cdb40bd42addef4e11363cb5, type: 3}
 --- !u!4 &8823635603247669954 stripped
@@ -151,11 +153,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3317358233224079836}
     m_Modifications:
-    - target: {fileID: 6842666643955850538, guid: 00e58572cdb40bd42addef4e11363cb5,
-        type: 3}
-      propertyPath: m_Name
-      value: Triangle
-      objectReference: {fileID: 0}
     - target: {fileID: 6296623743420316728, guid: 00e58572cdb40bd42addef4e11363cb5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -211,6 +208,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6842666643955850538, guid: 00e58572cdb40bd42addef4e11363cb5,
+        type: 3}
+      propertyPath: m_Name
+      value: Triangle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00e58572cdb40bd42addef4e11363cb5, type: 3}
 --- !u!4 &8005889861811953808 stripped
@@ -226,11 +228,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3317358233224079836}
     m_Modifications:
-    - target: {fileID: 6842666643955850538, guid: 00e58572cdb40bd42addef4e11363cb5,
-        type: 3}
-      propertyPath: m_Name
-      value: Triangle (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 6296623743420316728, guid: 00e58572cdb40bd42addef4e11363cb5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -286,6 +283,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -70.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6842666643955850538, guid: 00e58572cdb40bd42addef4e11363cb5,
+        type: 3}
+      propertyPath: m_Name
+      value: Triangle (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00e58572cdb40bd42addef4e11363cb5, type: 3}
 --- !u!4 &144114741559122963 stripped
@@ -301,11 +303,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3317358233224079836}
     m_Modifications:
-    - target: {fileID: 6842666643955850538, guid: 00e58572cdb40bd42addef4e11363cb5,
-        type: 3}
-      propertyPath: m_Name
-      value: Triangle (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 6296623743420316728, guid: 00e58572cdb40bd42addef4e11363cb5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -360,6 +357,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -70.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842666643955850538, guid: 00e58572cdb40bd42addef4e11363cb5,
+        type: 3}
+      propertyPath: m_Name
+      value: Triangle (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00e58572cdb40bd42addef4e11363cb5, type: 3}

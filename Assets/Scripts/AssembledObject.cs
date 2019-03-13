@@ -8,9 +8,9 @@ namespace AstroNet.GameElements
     public class AssembledObject : MonoBehaviour
     {
         public Action OnAsteroidDestroyed;
-
+        public Action OnTargetReached;
         [SerializeField] List<Transform> _faces;
-
+        [SerializeField] private string _playerTag;
         private Rigidbody _rigidBody;
 
         private ObjectFace _lastFace;
@@ -61,6 +61,12 @@ namespace AstroNet.GameElements
         {
             _lastFace.OnFaceExploded -= LastFaceDestroyed;
             OnAsteroidDestroyed?.Invoke();
+        }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if(!collision.gameObject.CompareTag(_playerTag)) return;
+
+            OnTargetReached?.Invoke();
         }
     }
 }

@@ -73,6 +73,8 @@ MonoBehaviour:
   - {fileID: 8254356124633062666}
   - {fileID: 5075334974740937033}
   - {fileID: 5576848674807656852}
+  _playerTag: AsteroidTarget
+  _explosionEffect: {fileID: 0}
 --- !u!1001 &453409408809178109
 PrefabInstance:
   m_ObjectHideFlags: 0

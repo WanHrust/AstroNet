@@ -47,13 +47,14 @@ namespace AstroNet.GameElements
 
         public void Explode()
         {
+            _active = false;
             Instantiate(_explosionEffect, this.transform);
             Invoke("DisableObject", _effectDuration);
         }
 
         private void DisableObject()
         {
-            _active = false;
+            
             foreach (var meshRenderer in _meshRenderers)
             {
                 meshRenderer.enabled = false;
